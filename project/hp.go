@@ -17,29 +17,29 @@ import (
 
 
 type Details []struct {
-	Name           string        `json:"name, omitempty"`
-	AlternateNames []interface{} `json:"alternate_names, omitempty"`
-	Species        string        `json:"species, omitempty"`
-	Gender         string        `json:"gender, omitempty"`
-	House          string        `json:"house, omitempty"`
-	DateOfBirth    string        `json:"dateOfBirth, omitempty"`
-	YearOfBirth    int           `json:"yearOfBirth, omitempty"`
-	Wizard         bool          `json:"wizard, omitempty"`
-	Ancestry       string        `json:"ancestry, omitempty"`
-	EyeColour      string        `json:"eyeColour, omitempty"`
-	HairColour     string        `json:"hairColour, omitempty"`
-	Wand           struct {
-		Wood   string `json:"wood, omitempty"`
-		Core   string `json:"core, omitempty"`
-		Length int    `json:"length, omitempty"`
-	} `json:"wand"`
-	Patronus        string        `json:"patronus, omitempty"`
-	HogwartsStudent bool          `json:"hogwartsStudent, omitempty"`
-	HogwartsStaff   bool          `json:"hogwartsStaff, omitempty"`
-	Actor           string        `json:"actor, omitempty"`
-	AlternateActors []interface{} `json:"alternate_actors, omitempty"`
-	Alive           bool          `json:"alive, omitempty"`
-	Image           string        `json:"image, omitempty"`
+        Name           string        `json:"name, omitempty"`
+        AlternateNames []interface{} `json:"alternate_names, omitempty"`
+        Species        string        `json:"species, omitempty"`
+        Gender         string        `json:"gender, omitempty"`
+        House          string        `json:"house, omitempty"`
+        DateOfBirth    string        `json:"dateOfBirth, omitempty"`
+        YearOfBirth    int           `json:"yearOfBirth, omitempty"`
+        Wizard         bool          `json:"wizard, omitempty"`
+        Ancestry       string        `json:"ancestry, omitempty"`
+        EyeColour      string        `json:"eyeColour, omitempty"`
+        HairColour     string        `json:"hairColour, omitempty"`
+        Wand           struct {
+                Wood   string `json:"wood, omitempty"`
+                Core   string `json:"core, omitempty"`
+                Length int    `json:"length, omitempty"`
+        } `json:"wand"`
+        Patronus        string        `json:"patronus, omitempty"`
+        HogwartsStudent bool          `json:"hogwartsStudent, omitempty"`
+        HogwartsStaff   bool          `json:"hogwartsStaff, omitempty"`
+        Actor           string        `json:"actor, omitempty"`
+        AlternateActors []interface{} `json:"alternate_actors, omitempty"`
+        Alive           bool          `json:"alive, omitempty"`
+        Image           string        `json:"image, omitempty"`
 }
 
 
@@ -59,13 +59,5 @@ func main() {
 
     var responseObject Details
     json.Unmarshal(body, &responseObject)
-
-	// fmt.Printf("%+v", responseObject)
-	// fmt.Println(responseObject)
-    // fmt.Println(len(responseObject.name))
-
-    for i := 0; i < len(responseObject); i++ {
-        fmt.Println(responseObject[i])
-    }
-
-}
+-- INSERT --                                                                                                                                                                                                                                                1,1           Top
+[ttyd] 0:vim*                                                                                                                                                                                                                          "student@bchd: ~/mycod" 16:29 09-Feb-22
