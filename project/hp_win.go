@@ -108,6 +108,7 @@ func SingleChar() {
 func House() {
 
 	var house string
+	fmt.Scanf("s", &house)
 	// var name string
 	// var lastName string
 	fmt.Println("\nEnter the House Name you would like to see (Capitalized): \n" + "Gryffindor\n" + "Hufflepuff\n" + "Ravenclaw\n" + "Slytherin\n")
