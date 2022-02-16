@@ -53,7 +53,8 @@ func SingleChar() {
 		var name string
 		// var name string
 		// var lastName string
-		fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
+		// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
+		fmt.Printf("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
 		scanner := bufio.NewScanner(os.Stdin)
 
 		if scanner.Scan() {
