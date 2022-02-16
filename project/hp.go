@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 	// "strconv"
 )
 
@@ -230,4 +231,7 @@ func main() {
 	} else if input == "3" {
 		Staff()
 	}
+
+	time.Sleep(10 * time.Minute)
+
 }
