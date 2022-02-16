@@ -1,16 +1,15 @@
 package main
 
 import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "log"
-    "net/http"
-    "os"
 	"bufio"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
 	// "strconv"
 )
-
 
 // http://hp-api.herokuapp.com/api/characters - view all characters
 // http://hp-api.herokuapp.com/api/characters/students - view all characters who are Hogwarts students during the book series
@@ -22,16 +21,16 @@ type Details []struct {
 	Name           string        `json:"name"`
 	AlternateNames []interface{} `json:"alternate_names"`
 	// AlternateNames []string 	 `json:"alternate_names"`
-	Species        string        `json:"species"`
-	Gender         string        `json:"gender"`
-	House          string        `json:"house"`
-	DateOfBirth    string        `json:"dateOfBirth"`
-	YearOfBirth    int        	 `json:"yearOfBirth"`
-	Wizard         bool          `json:"wizard"`
-	Ancestry       string        `json:"ancestry"`
-	EyeColour      string        `json:"eyeColour"`
-	HairColour     string        `json:"hairColour"`
-	Wand           struct {
+	Species     string `json:"species"`
+	Gender      string `json:"gender"`
+	House       string `json:"house"`
+	DateOfBirth string `json:"dateOfBirth"`
+	YearOfBirth int    `json:"yearOfBirth"`
+	Wizard      bool   `json:"wizard"`
+	Ancestry    string `json:"ancestry"`
+	EyeColour   string `json:"eyeColour"`
+	HairColour  string `json:"hairColour"`
+	Wand        struct {
 		Wood   string `json:"wood"`
 		Core   string `json:"core"`
 		Length int    `json:"length"`
@@ -45,43 +44,41 @@ type Details []struct {
 	Image           string        `json:"image"`
 }
 
-
 // Start functions here
 
 func SingleChar() {
 
-		var name string
-		fmt.Scanf("s", &name)
-		// var name string
-		// var lastName string
-		// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
-		fmt.Printf("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
-		scanner := bufio.NewScanner(os.Stdin)
+	var name string
+	fmt.Scanf("s", &name)
+	// var name string
+	// var lastName string
+	// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
+	fmt.Printf("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
+	scanner := bufio.NewScanner(os.Stdin)
 
-		if scanner.Scan() {
-			name = scanner.Text()
-		}
+	if scanner.Scan() {
+		name = scanner.Text()
+	}
 
-		// response, err := http.Get("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
-		response, err := http.Get("http://hp-api.herokuapp.com/api/characters")
-	
-		if err != nil {
-			fmt.Print(err.Error())
-			os.Exit(1)
-		}
-	
-		body, err := ioutil.ReadAll(response.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
-		// fmt.Println(string(body))
-	
-		var responseObject Details
-		json.Unmarshal(body, &responseObject)
+	// response, err := http.Get("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
+	response, err := http.Get("http://hp-api.herokuapp.com/api/characters")
 
-	
-		for charNum, charData := range responseObject {
-		if (name) == charData.Name{
+	if err != nil {
+		fmt.Print(err.Error())
+		os.Exit(1)
+	}
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// fmt.Println(string(body))
+
+	var responseObject Details
+	json.Unmarshal(body, &responseObject)
+
+	for charNum, charData := range responseObject {
+		if (name) == charData.Name {
 			fmt.Println("\n--------------------------------------------")
 			fmt.Println("Record Number:    ", charNum)
 			fmt.Println("Character Name:   ", charData.Name)
@@ -95,7 +92,7 @@ func SingleChar() {
 			fmt.Println("Eye Color:        ", charData.EyeColour)
 			fmt.Println("Hair Color:       ", charData.HairColour)
 			fmt.Println("Alternate Names:  ", charData.AlternateNames)
-			fmt.Println("Patronus:		   ", charData.Patronus)
+			fmt.Println("Patronus:         ", charData.Patronus)
 			fmt.Println("Hogwarts Student: ", charData.HogwartsStudent)
 			fmt.Println("Hogwarts Staff:   ", charData.HogwartsStaff)
 			fmt.Println("Actor:            ", charData.Actor)
@@ -107,8 +104,8 @@ func SingleChar() {
 			fmt.Println(" Wand Core:       ", charData.Wand.Core)
 			fmt.Println(" Wand Length:     ", charData.Wand.Length)
 			fmt.Println("\n")
-			   }
 		}
+	}
 }
 
 func House() {
@@ -141,10 +138,9 @@ func House() {
 	var responseObject Details
 	json.Unmarshal(body, &responseObject)
 
-
 	for charNum, charData := range responseObject {
-	if (house) == charData.House{
-		fmt.Println("\n--------------------------------------------")
+		if (house) == charData.House {
+			fmt.Println("\n--------------------------------------------")
 			fmt.Println("Record Number:    ", charNum)
 			fmt.Println("Character Name:   ", charData.Name)
 			fmt.Println("House:            ", charData.House)
@@ -169,7 +165,7 @@ func House() {
 			fmt.Println(" Wand Core:       ", charData.Wand.Core)
 			fmt.Println(" Wand Length:     ", charData.Wand.Length)
 			fmt.Println("\n")
-		   }
+		}
 	}
 }
 
@@ -192,33 +188,32 @@ func Staff() {
 	var responseObject Details
 	json.Unmarshal(body, &responseObject)
 
-
 	for charNum, charData := range responseObject {
 		fmt.Println("\n--------------------------------------------")
-			fmt.Println("Record Number:    ", charNum)
-			fmt.Println("Character Name:   ", charData.Name)
-			fmt.Println("House:            ", charData.House)
-			fmt.Println("Species:          ", charData.Species)
-			fmt.Println("Gender:           ", charData.Gender)
-			fmt.Println("Date of Birth:    ", charData.DateOfBirth)
-			fmt.Println("Year of Birth:    ", charData.YearOfBirth)
-			fmt.Println("Wizard:           ", charData.Wizard)
-			fmt.Println("Ancestry:         ", charData.Ancestry)
-			fmt.Println("Eye Color:        ", charData.EyeColour)
-			fmt.Println("Hair Color:       ", charData.HairColour)
-			fmt.Println("Alternate Names:  ", charData.AlternateNames)
-			fmt.Println("Patronus:		   ", charData.Patronus)
-			fmt.Println("Hogwarts Student: ", charData.HogwartsStudent)
-			fmt.Println("Hogwarts Staff:   ", charData.HogwartsStaff)
-			fmt.Println("Actor:            ", charData.Actor)
-			fmt.Println("Alternate Actors: ", charData.AlternateActors)
-			fmt.Println("Alive:            ", charData.Alive)
-			fmt.Println("Image:            ", charData.Image)
-			fmt.Println("Wand Details")
-			fmt.Println(" Wand Wood Type:  ", charData.Wand.Wood)
-			fmt.Println(" Wand Core:       ", charData.Wand.Core)
-			fmt.Println(" Wand Length:     ", charData.Wand.Length)
-			fmt.Println("\n")
+		fmt.Println("Record Number:    ", charNum)
+		fmt.Println("Character Name:   ", charData.Name)
+		fmt.Println("House:            ", charData.House)
+		fmt.Println("Species:          ", charData.Species)
+		fmt.Println("Gender:           ", charData.Gender)
+		fmt.Println("Date of Birth:    ", charData.DateOfBirth)
+		fmt.Println("Year of Birth:    ", charData.YearOfBirth)
+		fmt.Println("Wizard:           ", charData.Wizard)
+		fmt.Println("Ancestry:         ", charData.Ancestry)
+		fmt.Println("Eye Color:        ", charData.EyeColour)
+		fmt.Println("Hair Color:       ", charData.HairColour)
+		fmt.Println("Alternate Names:  ", charData.AlternateNames)
+		fmt.Println("Patronus:		   ", charData.Patronus)
+		fmt.Println("Hogwarts Student: ", charData.HogwartsStudent)
+		fmt.Println("Hogwarts Staff:   ", charData.HogwartsStaff)
+		fmt.Println("Actor:            ", charData.Actor)
+		fmt.Println("Alternate Actors: ", charData.AlternateActors)
+		fmt.Println("Alive:            ", charData.Alive)
+		fmt.Println("Image:            ", charData.Image)
+		fmt.Println("Wand Details")
+		fmt.Println(" Wand Wood Type:  ", charData.Wand.Wood)
+		fmt.Println(" Wand Core:       ", charData.Wand.Core)
+		fmt.Println(" Wand Length:     ", charData.Wand.Length)
+		fmt.Println("\n")
 	}
 }
 
@@ -229,10 +224,10 @@ func main() {
 	fmt.Scanf("%s", &input)
 
 	if input == "1" {
-		SingleChar()		
+		SingleChar()
 	} else if input == "2" {
-		House()		
+		House()
 	} else if input == "3" {
-		Staff()		
+		Staff()
 	}
 }
