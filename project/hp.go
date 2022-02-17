@@ -8,8 +8,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 	"strings"
+	"time"
 	// "strconv"
 )
 
@@ -56,7 +56,7 @@ func SingleChar() {
 	// var name string
 	// var lastName string
 	// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
-	fmt.Printf("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
+	fmt.Printf("\nEnter Character First and Last Name: \n" + "Example: Harry Potter or harry potter\n")
 	scanner := bufio.NewScanner(os.Stdin)
 
 	if scanner.Scan() {
@@ -119,7 +119,7 @@ func House() {
 	fmt.Scanf("s", &housetitle)
 	// var name string
 	// var lastName string
-	fmt.Println("\nEnter the House Name you would like to see (Capitalized): \n" + "Gryffindor\n" + "Hufflepuff\n" + "Ravenclaw\n" + "Slytherin\n")
+	fmt.Println("\nEnter the House Name you would like to see: \n" + "Gryffindor\n" + "Hufflepuff\n" + "Ravenclaw\n" + "Slytherin\n")
 	scanner := bufio.NewScanner(os.Stdin)
 
 	if scanner.Scan() {
