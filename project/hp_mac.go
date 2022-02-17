@@ -8,6 +8,7 @@ import (
     "net/http"
     "os"
 	"bufio"
+	"strings"
 	// "strconv"
 )
 
@@ -50,7 +51,8 @@ type Details []struct {
 
 func SingleChar() {
 
-		var name string
+		var nametitle string
+		// var name string
 		// var name string
 		// var lastName string
 		// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
@@ -58,8 +60,10 @@ func SingleChar() {
 		scanner := bufio.NewScanner(os.Stdin)
 
 		if scanner.Scan() {
-			name = scanner.Text()
+			nametitle = scanner.Text()
 		}
+
+		name := strings.Title(nametitle)
 
 		// response, err := http.Get("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
 		response, err := http.Get("http://hp-api.herokuapp.com/api/characters")

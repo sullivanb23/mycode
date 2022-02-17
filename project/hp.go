@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	"strings"
 	// "strconv"
 )
 
@@ -49,8 +50,9 @@ type Details []struct {
 
 func SingleChar() {
 
-	var name string
-	fmt.Scanf("s", &name)
+	var nametitle string
+	// var name string
+	fmt.Scanf("s", &nametitle)
 	// var name string
 	// var lastName string
 	// fmt.Println("\nEnter Character First and Last Name (Capitalized): \n" + "Example: Harry Potter\n")
@@ -58,8 +60,10 @@ func SingleChar() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	if scanner.Scan() {
-		name = scanner.Text()
+		nametitle = scanner.Text()
 	}
+
+	name := strings.Title(nametitle)
 
 	// response, err := http.Get("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
 	response, err := http.Get("http://hp-api.herokuapp.com/api/characters")
@@ -111,16 +115,18 @@ func SingleChar() {
 
 func House() {
 
-	var house string
-	fmt.Scanf("s", &house)
+	var housetitle string
+	fmt.Scanf("s", &housetitle)
 	// var name string
 	// var lastName string
 	fmt.Println("\nEnter the House Name you would like to see (Capitalized): \n" + "Gryffindor\n" + "Hufflepuff\n" + "Ravenclaw\n" + "Slytherin\n")
 	scanner := bufio.NewScanner(os.Stdin)
 
 	if scanner.Scan() {
-		house = scanner.Text()
+		housetitle = scanner.Text()
 	}
+
+	house := strings.Title(housetitle)
 
 	// response, err := http.Get("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
 	response, err := http.Get("http://hp-api.herokuapp.com/api/characters")
